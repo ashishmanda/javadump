@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Baltimore"/>
+      <x value="76"/>
+      <y value="39"/>
+      <radius value="5"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Chicago"/>
+      <x value="81"/>
+      <y value="47"/>
+      <radius value="5"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Atlanta"/>
+      <x value="84"/>
+      <y value="33"/>
+      <radius value="5"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Los_Angeles"/>
+      <x value="118"/>
+      <y value="33"/>
+      <radius value="5"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Miami"/>
+      <x value="80"/>
+      <y value="25"/>
+      <radius value="5"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Boston"/>
+      <x value="71"/>
+      <y value="42"/>
+      <radius value="50"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="listCities"/>
+    <parameters>
+      <sortBy value="coordinate"/>
+    </parameters>
+    <output>
+      <cityList>
+        <city color="black" name="Miami" radius="5" x="80" y="25"/>
+        <city color="black" name="Atlanta" radius="5" x="84" y="33"/>
+        <city color="black" name="Los_Angeles" radius="5" x="118" y="33"/>
+        <city color="black" name="Baltimore" radius="5" x="76" y="39"/>
+        <city color="black" name="Boston" radius="50" x="71" y="42"/>
+        <city color="black" name="Chicago" radius="5" x="81" y="47"/>
+      </cityList>
+    </output>
+  </success>
+  <error type="nameNotInDictionary">
+    <command name="mapCity"/>
+    <parameters>
+      <name value="Baltimore"/>
+    </parameters>
+  </error>
+  <error type="nameNotInDictionary">
+    <command name="mapCity"/>
+    <parameters>
+      <name value="Baltimore"/>
+    </parameters>
+  </error>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Hidden"/>
+      <x value="1000"/>
+      <y value="1000"/>
+      <radius value="40"/>
+      <color value="red"/>
+    </parameters>
+    <output/>
+  </success>
+  <error type="nameNotInDictionary">
+    <command name="mapCity"/>
+    <parameters>
+      <name value="Hidden"/>
+    </parameters>
+  </error>
+  <error type="nameNotInDictionary">
+    <command name="unmapCity"/>
+    <parameters>
+      <name value="Baltimore"/>
+    </parameters>
+  </error>
+  <error type="nameNotInDictionary">
+    <command name="unmapCity"/>
+    <parameters>
+      <name value="Baltimore"/>
+    </parameters>
+  </error>
+  <error type="nameNotInDictionary">
+    <command name="mapCity"/>
+    <parameters>
+      <name value="Fake"/>
+    </parameters>
+  </error>
+  <error type="nameNotInDictionary">
+    <command name="unmapCity"/>
+    <parameters>
+      <name value="Fake"/>
+    </parameters>
+  </error>
+  <error type="cityDoesNotExist">
+    <command name="deleteCity"/>
+    <parameters>
+      <name value="Hidden"/>
+    </parameters>
+  </error>
+  <error type="cityDoesNotExist">
+    <command name="deleteCity"/>
+    <parameters>
+      <name value="Hidden"/>
+    </parameters>
+  </error>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Rockville"/>
+      <x value="80"/>
+      <y value="39"/>
+      <radius value="5"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="mapCity"/>
+    <parameters>
+      <name value="Rockville"/>
+    </parameters>
+    <output/>
+  </success>
+  <error type="nameNotInDictionary">
+    <command name="mapCity"/>
+    <parameters>
+      <name value="Baltimore"/>
+    </parameters>
+  </error>
+  <success>
+    <command name="nearestCity"/>
+    <parameters>
+      <x value="70"/>
+      <y value="39"/>
+    </parameters>
+    <output>
+      <city color="black" name="Rockville" radius="5" x="80" y="39"/>
+    </output>
+  </success>
+  <success>
+    <command name="printPRQuadtree"/>
+    <parameters/>
+    <output>
+      <quadtree>
+        <black name="Rockville" x="80" y="39"/>
+      </quadtree>
+    </output>
+  </success>
+  <success>
+    <command name="nearestCity"/>
+    <parameters>
+      <x value="80"/>
+      <y value="39"/>
+    </parameters>
+    <output>
+      <city color="black" name="Rockville" radius="5" x="80" y="39"/>
+    </output>
+  </success>
+  <success>
+    <command name="nearestCity"/>
+    <parameters>
+      <x value="78"/>
+      <y value="39"/>
+    </parameters>
+    <output>
+      <city color="black" name="Rockville" radius="5" x="80" y="39"/>
+    </output>
+  </success>
+  <success>
+    <command name="clearAll"/>
+    <parameters/>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Baltimore"/>
+      <x value="512"/>
+      <y value="512"/>
+      <radius value="4"/>
+      <color value="red"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Annapolis"/>
+      <x value="510"/>
+      <y value="510"/>
+      <radius value="2"/>
+      <color value="red"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Silver_Spring"/>
+      <x value="511"/>
+      <y value="511"/>
+      <radius value="3"/>
+      <color value="red"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Washington"/>
+      <x value="512"/>
+      <y value="511"/>
+      <radius value="3"/>
+      <color value="red"/>
+    </parameters>
+    <output/>
+  </success>
+  <error type="mapIsEmpty">
+    <command name="nearestCity"/>
+    <parameters>
+      <x value="513"/>
+      <y value="513"/>
+    </parameters>
+  </error>
+  <error type="cityOutOfBounds">
+    <command name="mapCity"/>
+    <parameters>
+      <name value="Baltimore"/>
+    </parameters>
+  </error>
+  <error type="nameNotInDictionary">
+    <command name="mapCity"/>
+    <parameters>
+      <name value="Annapolis"/>
+    </parameters>
+  </error>
+  <success>
+    <command name="mapCity"/>
+    <parameters>
+      <name value="Silver_Spring"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="printPRQuadtree"/>
+    <parameters/>
+    <output>
+      <quadtree>
+        <black name="Silver_Spring" x="511" y="511"/>
+      </quadtree>
+    </output>
+  </success>
+  <error type="nameNotInDictionary">
+    <command name="mapCity"/>
+    <parameters>
+      <name value="Village_Hidden_In_The_Leaves"/>
+    </parameters>
+  </error>
+</results>

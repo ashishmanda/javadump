@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Berlin"/>
+      <x value="128"/>
+      <y value="128"/>
+      <radius value="50"/>
+      <color value="red"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Geneva"/>
+      <x value="90"/>
+      <y value="70"/>
+      <radius value="80"/>
+      <color value="orange"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Paris"/>
+      <x value="100"/>
+      <y value="70"/>
+      <radius value="10"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="Madrid"/>
+      <x value="45"/>
+      <y value="50"/>
+      <radius value="60"/>
+      <color value="yellow"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="mapCity"/>
+    <parameters>
+      <name value="Paris"/>
+    </parameters>
+    <output/>
+  </success>
+  <error type="nameNotInDictionary">
+    <command name="mapCity"/>
+    <parameters>
+      <name value="Montreal"/>
+    </parameters>
+  </error>
+  <success>
+    <command name="mapRoad"/>
+    <parameters>
+      <start value="Berlin"/>
+      <end value="Geneva"/>
+    </parameters>
+    <output>
+      <roadCreated end="Geneva" start="Berlin"/>
+    </output>
+  </success>
+  <success>
+    <command name="mapRoad"/>
+    <parameters>
+      <start value="Geneva"/>
+      <end value="Madrid"/>
+    </parameters>
+    <output>
+      <roadCreated end="Madrid" start="Geneva"/>
+    </output>
+  </success>
+  <success>
+    <command id="1" name="printPMQuadtree"/>
+    <parameters/>
+    <output>
+      <quadtree order="3">
+        <gray x="128" y="128">
+          <black cardinality="2">
+            <city color="red" name="Berlin" radius="50" x="128" y="128"/>
+            <road end="Geneva" start="Berlin"/>
+          </black>
+          <black cardinality="2">
+            <city color="red" name="Berlin" radius="50" x="128" y="128"/>
+            <road end="Geneva" start="Berlin"/>
+          </black>
+          <gray x="64" y="64">
+            <white/>
+            <gray x="96" y="96">
+              <white/>
+              <black cardinality="2">
+                <city color="red" name="Berlin" radius="50" x="128" y="128"/>
+                <road end="Geneva" start="Berlin"/>
+              </black>
+              <black cardinality="3">
+                <city color="orange" name="Geneva" radius="80" x="90" y="70"/>
+                <road end="Madrid" start="Geneva"/>
+                <road end="Geneva" start="Berlin"/>
+              </black>
+              <black cardinality="2">
+                <isolatedCity color="black" name="Paris" radius="10" x="100" y="70"/>
+                <road end="Geneva" start="Berlin"/>
+              </black>
+            </gray>
+            <black cardinality="2">
+              <city color="yellow" name="Madrid" radius="60" x="45" y="50"/>
+              <road end="Madrid" start="Geneva"/>
+            </black>
+            <black cardinality="1">
+              <road end="Madrid" start="Geneva"/>
+            </black>
+          </gray>
+          <black cardinality="2">
+            <city color="red" name="Berlin" radius="50" x="128" y="128"/>
+            <road end="Geneva" start="Berlin"/>
+          </black>
+        </gray>
+      </quadtree>
+    </output>
+  </success>
+  <success>
+    <command name="saveMap"/>
+    <parameters>
+      <name value="map_5"/>
+    </parameters>
+    <output/>
+  </success>
+</results>

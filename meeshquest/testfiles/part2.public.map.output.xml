@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A1"/>
+      <x value="1"/>
+      <y value="50"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A2"/>
+      <x value="102"/>
+      <y value="50"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <error type="duplicateCityName">
+    <command name="createCity"/>
+    <parameters>
+      <name value="A2"/>
+      <x value="100"/>
+      <y value="50"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+  </error>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A3"/>
+      <x value="50"/>
+      <y value="50"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A4"/>
+      <x value="1"/>
+      <y value="100"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A5"/>
+      <x value="50"/>
+      <y value="100"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A6"/>
+      <x value="100"/>
+      <y value="100"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="A7"/>
+      <x value="105"/>
+      <y value="105"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="printAvlTree"/>
+    <parameters/>
+    <output>
+      <AvlGTree cardinality="7" height="2" maxImbalance="1">
+        <node key="A4" value="(1,100)">
+          <node key="A6" value="(100,100)">
+            <node key="A7" value="(105,105)">
+              <emptyChild/>
+              <emptyChild/>
+            </node>
+            <node key="A5" value="(50,100)">
+              <emptyChild/>
+              <emptyChild/>
+            </node>
+          </node>
+          <node key="A2" value="(102,50)">
+            <node key="A3" value="(50,50)">
+              <emptyChild/>
+              <emptyChild/>
+            </node>
+            <node key="A1" value="(1,50)">
+              <emptyChild/>
+              <emptyChild/>
+            </node>
+          </node>
+        </node>
+      </AvlGTree>
+    </output>
+  </success>
+  <success>
+    <command name="mapRoad"/>
+    <parameters>
+      <start value="A1"/>
+      <end value="A2"/>
+    </parameters>
+    <output>
+      <roadCreated end="A2" start="A1"/>
+    </output>
+  </success>
+  <success>
+    <command name="mapCity"/>
+    <parameters>
+      <name value="A3"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="mapCity"/>
+    <parameters>
+      <name value="A4"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="mapCity"/>
+    <parameters>
+      <name value="A5"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="mapCity"/>
+    <parameters>
+      <name value="A6"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command name="printPMQuadtree"/>
+    <parameters/>
+    <output>
+      <quadtree>
+        <gray x="64" y="64">
+          <gray x="32" y="96">
+            <black cardinality="1">
+              <isolatedCity color="black" name="A4" radius="0" x="1" y="100"/>
+            </black>
+            <black cardinality="1">
+              <isolatedCity color="black" name="A5" radius="0" x="50" y="100"/>
+            </black>
+            <white/>
+            <white/>
+          </gray>
+          <black cardinality="1">
+            <isolatedCity color="black" name="A6" radius="0" x="100" y="100"/>
+          </black>
+          <gray x="32" y="32">
+            <black cardinality="2">
+              <city color="black" name="A1" radius="0" x="1" y="50"/>
+              <road end="A1" start="A2"/>
+            </black>
+            <black cardinality="2">
+              <isolatedCity color="black" name="A3" radius="0" x="50" y="50"/>
+              <road end="A1" start="A2"/>
+            </black>
+            <white/>
+            <white/>
+          </gray>
+          <black cardinality="2">
+            <city color="black" name="A2" radius="0" x="102" y="50"/>
+            <road end="A1" start="A2"/>
+          </black>
+        </gray>
+      </quadtree>
+    </output>
+  </success>
+</results>

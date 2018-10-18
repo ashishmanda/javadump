@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+  <success>
+    <command name="createCity"/>
+    <parameters>
+      <name value="S"/>
+      <x value="2"/>
+      <y value="1"/>
+      <radius value="1"/>
+      <color value="red"/>
+    </parameters>
+    <output/>
+  </success>
+</results>

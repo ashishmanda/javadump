@@ -1,0 +1,17 @@
+<commands 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="part1in.xsd" 
+	spatialWidth="1024" 
+	spatialHeight="1024">
+ 	<createCity name="Baltimore" y="613" x="613" radius="5" color="black"/>
+ 	<createCity name="baltimore" y="820" x="450" radius="5" color="black"/>
+ 	<createCity name="Annapolis" y="613" x="100" radius="5" color="black"/>
+ 	<createCity name="Rockville" y="100" x="923" radius="5" color="black"/>
+ 	<createCity x="100" radius="5" color="red"	name="Los_Santos" y="100" />
+ 	<createCity name="Miami" y="101" x="100" radius="5" color="black"/>
+ 	<mapCity name="Baltimore" />
+ 	<mapCity name="baltimore" />
+ 	<mapCity name="Annapolis" />
+ 	<mapCity name="Rockville" />
+ 	<mapCity name="Los_Santos" /><nearestCity x="613" y="613" />
+</commands>

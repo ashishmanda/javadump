@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+  <success>
+    <command id="1" name="createCity"/>
+    <parameters>
+      <name value="A"/>
+      <localX value="2"/>
+      <localY value="6"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="2" name="createCity"/>
+    <parameters>
+      <name value="B"/>
+      <localX value="4"/>
+      <localY value="2"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="2" name="createCity"/>
+    <parameters>
+      <name value="C"/>
+      <localX value="4"/>
+      <localY value="2"/>
+      <remoteX value="1"/>
+      <remoteY value="1"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="2" name="createCity"/>
+    <parameters>
+      <name value="D"/>
+      <localX value="4"/>
+      <localY value="4"/>
+      <remoteX value="1"/>
+      <remoteY value="1"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="2" name="createCity"/>
+    <parameters>
+      <name value="E"/>
+      <localX value="5"/>
+      <localY value="2"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="3" name="mapRoad"/>
+    <parameters>
+      <start value="B"/>
+      <end value="A"/>
+    </parameters>
+    <output>
+      <roadCreated end="A" start="B"/>
+    </output>
+  </success>
+  <success>
+    <command id="3" name="mapRoad"/>
+    <parameters>
+      <start value="D"/>
+      <end value="C"/>
+    </parameters>
+    <output>
+      <roadCreated end="C" start="D"/>
+    </output>
+  </success>
+  <success>
+    <command id="5" name="mapAirport"/>
+    <parameters>
+      <name value="AirportA"/>
+      <localX value="2"/>
+      <localY value="14"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <terminalName value="TerminalAA"/>
+      <terminalX value="6"/>
+      <terminalY value="10"/>
+      <terminalCity value="A"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="5" name="mapAirport"/>
+    <parameters>
+      <name value="AirportB"/>
+      <localX value="2"/>
+      <localY value="14"/>
+      <remoteX value="1"/>
+      <remoteY value="1"/>
+      <terminalName value="TerminalBC"/>
+      <terminalX value="6"/>
+      <terminalY value="10"/>
+      <terminalCity value="C"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="7" name="mapTerminal"/>
+    <parameters>
+      <name value="TerminalAB"/>
+      <localX value="2"/>
+      <localY value="10"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <cityName value="A"/>
+      <airportName value="AirportA"/>
+    </parameters>
+    <output/>
+  </success>
+  <error type="terminalOutOfBounds">
+    <command id="7" name="mapTerminal"/>
+    <parameters>
+      <name value="TerminalAC"/>
+      <localX value="12"/>
+      <localY value="10"/>
+      <remoteX value="17"/>
+      <remoteY value="17"/>
+      <cityName value="A"/>
+      <airportName value="AirportA"/>
+    </parameters>
+  </error>
+  <error type="terminalOutOfBounds">
+    <command id="7" name="mapTerminal"/>
+    <parameters>
+      <name value="TerminalAC"/>
+      <localX value="17"/>
+      <localY value="17"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <cityName value="A"/>
+      <airportName value="AirportA"/>
+    </parameters>
+  </error>
+  <error type="airportDoesNotExist">
+    <command id="7" name="mapTerminal"/>
+    <parameters>
+      <name value="TerminalAC"/>
+      <localX value="12"/>
+      <localY value="12"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <cityName value="A"/>
+      <airportName value="AirportC"/>
+    </parameters>
+  </error>
+  <error type="airportNotInSameMetropole">
+    <command id="7" name="mapTerminal"/>
+    <parameters>
+      <name value="TerminalAC"/>
+      <localX value="12"/>
+      <localY value="12"/>
+      <remoteX value="1"/>
+      <remoteY value="1"/>
+      <cityName value="A"/>
+      <airportName value="AirportA"/>
+    </parameters>
+  </error>
+  <error type="connectingCityDoesNotExist">
+    <command id="7" name="mapTerminal"/>
+    <parameters>
+      <name value="TerminalAC"/>
+      <localX value="12"/>
+      <localY value="12"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <cityName value="ABC"/>
+      <airportName value="AirportA"/>
+    </parameters>
+  </error>
+  <error type="connectingCityNotInSameMetropole">
+    <command id="7" name="mapTerminal"/>
+    <parameters>
+      <name value="TerminalAC"/>
+      <localX value="12"/>
+      <localY value="12"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <cityName value="C"/>
+      <airportName value="AirportA"/>
+    </parameters>
+  </error>
+  <error type="connectingCityNotMapped">
+    <command id="7" name="mapTerminal"/>
+    <parameters>
+      <name value="TerminalAC"/>
+      <localX value="12"/>
+      <localY value="12"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <cityName value="E"/>
+      <airportName value="AirportA"/>
+    </parameters>
+  </error>
+  <success>
+    <command id="100" name="printPMQuadtree"/>
+    <parameters>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+    </parameters>
+    <output>
+      <quadtree order="3">
+        <gray x="8" y="8">
+          <gray x="4" y="12">
+            <black cardinality="1">
+              <airport localX="2" localY="14" name="AirportA" remoteX="1" remoteY="0"/>
+            </black>
+            <white/>
+            <black cardinality="3">
+              <terminal airportName="AirportA" cityName="A" localX="2" localY="10" name="TerminalAB" remoteX="1" remoteY="0"/>
+              <road end="TerminalAB" start="A"/>
+              <road end="TerminalAA" start="A"/>
+            </black>
+            <black cardinality="2">
+              <terminal airportName="AirportA" cityName="A" localX="6" localY="10" name="TerminalAA" remoteX="1" remoteY="0"/>
+              <road end="TerminalAA" start="A"/>
+            </black>
+          </gray>
+          <white/>
+          <gray x="4" y="4">
+            <black cardinality="4">
+              <city color="black" localX="2" localY="6" name="A" radius="0" remoteX="1" remoteY="0"/>
+              <road end="TerminalAB" start="A"/>
+              <road end="TerminalAA" start="A"/>
+              <road end="B" start="A"/>
+            </black>
+            <black cardinality="1">
+              <road end="TerminalAA" start="A"/>
+            </black>
+            <black cardinality="2">
+              <city color="black" localX="4" localY="2" name="B" radius="0" remoteX="1" remoteY="0"/>
+              <road end="B" start="A"/>
+            </black>
+            <black cardinality="2">
+              <city color="black" localX="4" localY="2" name="B" radius="0" remoteX="1" remoteY="0"/>
+              <road end="B" start="A"/>
+            </black>
+          </gray>
+          <white/>
+        </gray>
+      </quadtree>
+    </output>
+  </success>
+  <success>
+    <command id="200" name="mst"/>
+    <parameters>
+      <start value="B"/>
+    </parameters>
+    <output>
+      <mst distanceSpanned="35.032">
+        <node name="B">
+          <node name="A">
+            <node name="TerminalAB">
+              <node name="AirportA">
+                <node name="TerminalAA"/>
+                <node name="AirportB">
+                  <node name="TerminalBC">
+                    <node name="C">
+                      <node name="D"/>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </mst>
+    </output>
+  </success>
+</results>

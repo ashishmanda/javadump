@@ -1,0 +1,3 @@
+	public void test_primary() throws Exception {
+		runXmlTest("part1.primary");
+	}

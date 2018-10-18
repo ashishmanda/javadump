@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<commands xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" g="1" localSpatialHeight="1024" localSpatialWidth="1024" pmOrder="1" remoteSpatialHeight="1024" remoteSpatialWidth="1024" xsi:noNamespaceSchemaLocation="part3in.xsd">
+<createCity color="black" id="1" localX="140" localY="37" name="Baltimore" radius="0" remoteX="1" remoteY="0"/>
+<createCity color="black" id="2" localX="133" localY="834" name="Chicago" radius="0" remoteX="1" remoteY="0"/>
+<createCity color="black" id="3" localX="200" localY="300" name="New_York" radius="0" remoteX="1" remoteY="0"/>
+<createCity color="black" id="4" localX="1000" localY="1000" name="Zurich" radius="0" remoteX="0" remoteY="2"/>
+<createCity color="black" id="5" localX="500" localY="400" name="Paris" radius="0" remoteX="0" remoteY="2"/>
+<createCity color="black" id="6" localX="450" localY="450" name="Amsterdam" radius="0" remoteX="0" remoteY="2"/>
+<mapRoad end="Chicago" id="7" start="Baltimore"/>
+<mapRoad end="Paris" id="8" start="Zurich"/>
+<mapAirport id="9" localX="190" localY="300" name="Concorde" remoteX="1" remoteY="0" terminalName="T1" terminalX="195" terminalY="290" terminalCity="Baltimore"/>
+<listCities id="11" sortBy="name"/>
+</commands>

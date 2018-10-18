@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+  <success>
+    <command id="1" name="createCity"/>
+    <parameters>
+      <name value="Baltimore"/>
+      <localX value="140"/>
+      <localY value="37"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="2" name="createCity"/>
+    <parameters>
+      <name value="Chicago"/>
+      <localX value="133"/>
+      <localY value="834"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="3" name="createCity"/>
+    <parameters>
+      <name value="New_York"/>
+      <localX value="200"/>
+      <localY value="300"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="4" name="createCity"/>
+    <parameters>
+      <name value="Zurich"/>
+      <localX value="1000"/>
+      <localY value="1000"/>
+      <remoteX value="0"/>
+      <remoteY value="2"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="5" name="createCity"/>
+    <parameters>
+      <name value="Paris"/>
+      <localX value="500"/>
+      <localY value="400"/>
+      <remoteX value="0"/>
+      <remoteY value="2"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="6" name="createCity"/>
+    <parameters>
+      <name value="Amsterdam"/>
+      <localX value="450"/>
+      <localY value="450"/>
+      <remoteX value="0"/>
+      <remoteY value="2"/>
+      <radius value="0"/>
+      <color value="black"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="7" name="mapRoad"/>
+    <parameters>
+      <start value="Baltimore"/>
+      <end value="Chicago"/>
+    </parameters>
+    <output>
+      <roadCreated end="Chicago" start="Baltimore"/>
+    </output>
+  </success>
+  <success>
+    <command id="8" name="mapRoad"/>
+    <parameters>
+      <start value="Zurich"/>
+      <end value="Paris"/>
+    </parameters>
+    <output>
+      <roadCreated end="Paris" start="Zurich"/>
+    </output>
+  </success>
+  <success>
+    <command id="9" name="mapAirport"/>
+    <parameters>
+      <name value="Concorde"/>
+      <localX value="190"/>
+      <localY value="300"/>
+      <remoteX value="1"/>
+      <remoteY value="0"/>
+      <terminalName value="T1"/>
+      <terminalX value="195"/>
+      <terminalY value="290"/>
+      <terminalCity value="Baltimore"/>
+    </parameters>
+    <output/>
+  </success>
+  <success>
+    <command id="11" name="listCities"/>
+    <parameters>
+      <sortBy value="name"/>
+    </parameters>
+    <output>
+      <cityList>
+        <city color="black" localX="1000" localY="1000" name="Zurich" radius="0" remoteX="0" remoteY="2"/>
+        <city color="black" localX="500" localY="400" name="Paris" radius="0" remoteX="0" remoteY="2"/>
+        <city color="black" localX="200" localY="300" name="New_York" radius="0" remoteX="1" remoteY="0"/>
+        <city color="black" localX="133" localY="834" name="Chicago" radius="0" remoteX="1" remoteY="0"/>
+        <city color="black" localX="140" localY="37" name="Baltimore" radius="0" remoteX="1" remoteY="0"/>
+        <city color="black" localX="450" localY="450" name="Amsterdam" radius="0" remoteX="0" remoteY="2"/>
+      </cityList>
+    </output>
+  </success>
+</results>

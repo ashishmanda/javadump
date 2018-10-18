@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<commands xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" g="1" localSpatialHeight="16" localSpatialWidth="16" pmOrder="3" remoteSpatialHeight="16" remoteSpatialWidth="16" xsi:noNamespaceSchemaLocation="part3in.xsd">
+	<createCity color="black" id="1" localX="2" localY="6" name="A" radius="0" remoteX="1" remoteY="0"/>
+	<createCity color="black" id="2" localX="4" localY="2" name="B" radius="0" remoteX="1" remoteY="0"/>
+	<createCity color="black" id="2" localX="4" localY="2" name="C" radius="0" remoteX="1" remoteY="1"/>
+	<createCity color="black" id="2" localX="4" localY="4" name="D" radius="0" remoteX="1" remoteY="1"/>
+	<createCity color="black" id="2" localX="5" localY="2" name="E" radius="0" remoteX="1" remoteY="0"/>
+	<mapRoad end="A" id="3" start="B"/>
+	<mapRoad end="C" id="3" start="D"/>
+	<mapAirport id="5" localX="2" localY="14" name="AirportA" remoteX="1" remoteY="0" terminalName = "TerminalAA" terminalX = "6" terminalY = "10" terminalCity = "A"/>
+	<mapAirport id="5" localX="2" localY="14" name="AirportB" remoteX="1" remoteY="1" terminalName = "TerminalBC" terminalX = "6" terminalY = "10" terminalCity = "C"/>
+	<mapTerminal id="7" name="TerminalAB" localX="2" localY="10" remoteX="1" remoteY="0" cityName="A" airportName="AirportA"/>
+	<mapTerminal id="7" name="TerminalAC" localX="12" localY="10" remoteX="17" remoteY="17" cityName="A" airportName="AirportA"/>
+	<mapTerminal id="7" name="TerminalAC" localX="17" localY="17" remoteX="1" remoteY="0" cityName="A" airportName="AirportA"/>
+	<mapTerminal id="7" name="TerminalAC" localX="12" localY="12" remoteX="1" remoteY="0" cityName="A" airportName="AirportC"/>
+	<mapTerminal id="7" name="TerminalAC" localX="12" localY="12" remoteX="1" remoteY="1" cityName="A" airportName="AirportA"/>
+	<mapTerminal id="7" name="TerminalAC" localX="12" localY="12" remoteX="1" remoteY="0" cityName="ABC" airportName="AirportA"/>
+	<mapTerminal id="7" name="TerminalAC" localX="12" localY="12" remoteX="1" remoteY="0" cityName="C" airportName="AirportA"/>
+	<mapTerminal id="7" name="TerminalAC" localX="12" localY="12" remoteX="1" remoteY="0" cityName="E" airportName="AirportA"/>
+	<printPMQuadtree id="100" remoteX="1" remoteY="0" />
+	<mst start="B" id="200"/>
+</commands>

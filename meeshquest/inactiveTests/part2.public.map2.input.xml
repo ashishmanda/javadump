@@ -1,0 +1,20 @@
+<commands
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="part2in.xsd"
+    spatialWidth="256"
+    spatialHeight="256"
+    g="1"
+    pmOrder="3">
+ <createCity name="Berlin" x="128" y="128" radius="50" color="red"/>
+ <createCity name="Geneva" x="90" y="70" radius="80" color="orange"/>
+ <createCity name="Paris" x="100" y="70" radius="10" color="black"/>
+ <createCity name="Madrid" x="45" y="50" radius="60" color="yellow"/>
+ <mapCity name="Paris"/>
+ <mapCity name="Montreal"/>
+ <mapRoad start="Berlin" end="Geneva"/>
+
+ <mapRoad start="Geneva" end="Madrid"/>
+ <printPMQuadtree id="1"/>
+ <saveMap name="map_5"/>
+ 
+ </commands>
