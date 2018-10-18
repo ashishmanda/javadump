@@ -1,0 +1,169 @@
+package cmsc433.p5;
+
+import java.io.IOException;
+import java.util.LinkedList;
+
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+/**
+ * Map reduce which takes in a CSV file with tweets as input and output
+ * key/value pairs.</br>
+ * </br>
+ * The key for the map reduce depends on the specified {@link TrendingParameter}
+ * , <code>trendingOn</code> passed to
+ * {@link #score(Job, String, String, TrendingParameter)}).
+ */
+public class TweetPopularityMR {
+
+	// For your convenience...
+	public static final int          TWEET_SCORE   = 1;
+	public static final int          RETWEET_SCORE = 2;
+	public static final int          MENTION_SCORE = 1;
+	public static final int			 PAIR_SCORE = 1;
+
+	// Is either USER, TWEET, HASHTAG, or HASHTAG_PAIR. Set for you before call to map()
+	private static TrendingParameter trendingOn;
+
+	public static class TweetMapper
+	extends Mapper<TrendingParameter, Text,Object,Integer  > {
+
+		@Override
+		public void map(TrendingParameter key, Text value, Context context)
+				throws IOException, InterruptedException {
+			// Converts the CSV line into a tweet object
+			Tweet tweet = Tweet.createTweet(value.toString());
+
+			switch(trendingOn) {
+			case USER: 
+				context.write(tweet.getUserScreenName(), 1);
+				
+				for( String user : tweet.getMentionedUsers()) {
+					context.write(user, 1);
+				}
+				
+				String retweetedUser = tweet.getRetweetedUser();
+				
+				if(retweetedUser != null) {
+					context.write(retweetedUser, 2);
+				}
+				
+				break;
+			case TWEET:
+				context.write(tweet.getId(), 1);
+				Long retweetedTweet = tweet.getRetweetedTweet();
+				if(retweetedTweet != null ) {
+					context.write(retweetedTweet, 2);
+				}
+				break;
+			case HASHTAG:
+				for (String hashtag : tweet.getHashtags()) {
+					context.write(cleanTags(hashtag), 1);
+				}
+				break;
+			case HASHTAG_PAIR:
+				 context.write(tweet.getHashtags(), 1);
+				break;
+			}
+			
+			
+			// TODO: Your code goes here
+
+
+
+
+
+		}
+	}
+
+	private static Integer sumAll( Iterable<Integer> values) {
+		
+		Integer sum = 0;
+		for(Integer value : values) {
+			sum += value;
+		}
+		
+		return sum;
+	}
+	
+	public static class PopularityReducer
+	extends Reducer<Object, Integer, Text, Integer> {
+
+		@Override
+		public void reduce(Object key, Iterable<Integer> values, Context context)
+				throws IOException, InterruptedException {
+
+			print(key.toString() + ","  + sumAll(values).toString());
+			context.write(new Text(key.toString()), sumAll(values));
+
+
+
+
+		}
+
+		private void print(String string) {
+			// TODO Auto-generated method stub
+			System.out.println(string);
+		}
+	}
+
+	private static Iterable<String> cleanTags(Iterable<String> hashtagList) {
+		LinkedList<String> retList = new LinkedList<String>();
+		for(String hashTag : hashtagList) {
+			retList.add(hashTag.replace("#", ""));
+		}
+		return retList;
+	}
+	
+	private static String cleanTags(String hashtag) {
+		return hashtag.replace("#", "");
+	}
+	
+	/**
+	 * Method which performs a map reduce on a specified input CSV file and
+	 * outputs the scored tweets, users, or hashtags.</br>
+	 * </br>
+	 * 
+	 * @param job
+	 * @param input
+	 *          The CSV file containing tweets
+	 * @param output
+	 *          The output file with the scores
+	 * @param trendingOn
+	 *          The parameter on which to score
+	 * @return true if the map reduce was successful, false otherwise.
+	 * @throws Exception
+	 */
+	public static boolean score(Job job, String input, String output,
+			TrendingParameter trendingOn) throws Exception {
+
+		TweetPopularityMR.trendingOn = trendingOn;
+
+		job.setJarByClass(TweetPopularityMR.class);
+
+		// TODO: Set up map-reduce...
+		job.setJobName("Popularity Score Map");
+		job.setOutputKeyClass(Text.class);
+		job.setOutputValueClass(Integer.class);
+		job.setMapperClass(TweetMapper.class);
+		job.setReducerClass(PopularityReducer.class);
+		job.setMapOutputKeyClass(Object.class);
+		job.setMapOutputValueClass(Integer.class);
+		
+
+
+
+		// End
+
+		FileInputFormat.addInputPath(job, new Path(input));
+		FileOutputFormat.setOutputPath(job, new Path(output));
+
+		return job.waitForCompletion(true);
+	}
+}

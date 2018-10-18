@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="cmsc433.p2.Machine.MachineType"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="cmsc433.p2.SimulationEvent"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="scala.concurrent.Await"/>
+<fullyQualifiedTypeName name="scala.concurrent.duration.Duration"/>
+<fullyQualifiedTypeName name="java.util.HashSet"/>
+<fullyQualifiedTypeName name="java.util.Map.Entry"/>
+<fullyQualifiedTypeName name="cmsc433.p4.enums.AccessType"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="akka.actor.ActorRef"/>
+<fullyQualifiedTypeName name="cmsc433.p4.enums.AccessRequestType"/>
+<fullyQualifiedTypeName name="cmsc433.p4.messages.LogMsg"/>
+<fullyQualifiedTypeName name="cmsc433.p4.enums.ResourceStatus"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.TextInputFormat"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,18 @@
+package cmsc433.p3;
+
+import java.util.List;
+import java.util.concurrent.RecursiveTask;
+
+public class MazeTask extends RecursiveTask<List<Direction>>{
+
+	
+
+
+
+	@Override
+	protected List<Direction> compute() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

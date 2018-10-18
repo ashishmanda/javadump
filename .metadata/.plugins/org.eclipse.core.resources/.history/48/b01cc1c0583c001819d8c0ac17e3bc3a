@@ -1,0 +1,113 @@
+package cmsc433.p3;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.RecursiveTask;
+import cmsc433.p3.SkippingMazeSolver.SolutionFound;
+
+@SuppressWarnings("serial")
+public class MazeTask extends RecursiveTask<LinkedList<Direction>>{
+	
+	private static  Maze maze;
+	private final Position p;
+	private final int forkdepth;
+	private static Set<Position> visited = Collections.synchronizedSet(new HashSet<Position>());
+	private final static int THRESHOLD = 0;
+	private static StudentMTMazeSolver solver ;
+	
+	
+	public MazeTask(Maze maze, StudentMTMazeSolver solver) {
+		MazeTask.maze = maze;
+		MazeTask.solver = solver;
+		this.p = maze.getStart();
+		forkdepth = 1;
+	}
+	
+	public MazeTask(Position p, int lastdepth) {
+		this.p = p;
+		forkdepth = lastdepth + 1;
+	}
+
+	@SuppressWarnings("unused")
+	@Override
+	protected LinkedList<Direction> compute() {
+		if(maze.getEnd().equals(p)) {
+			return new LinkedList<Direction>();
+		}else {
+			MazeTask.visited.add(p);
+			List<Direction> ds = maze.getMoves(p);
+			for (Direction d  : ds) {
+				Position nextP = p.move(d);
+				if(!visited.contains(nextP)) {
+					LinkedList<Direction> sol;
+					if(forkdepth < THRESHOLD || THRESHOLD < 0) {
+						sol = new MazeTask(nextP, forkdepth+1).fork().join();
+					} else {
+						return (LinkedList<Direction>) solveDFS(nextP, d);
+					}
+					if(sol != null) {
+						
+							sol.addFirst(d);
+						return sol;
+					}
+				}
+				
+			}
+		}
+		
+		return null;
+		
+		
+	}
+	
+	private Choice nextChoices(Position p, Direction d) throws SolutionFound {
+		LinkedList<Direction> moves = maze.getMoves(p);
+		if (moves.size() == 1)
+			return solver.follow(p, moves.getFirst());
+		else
+			return new Choice(p, null, moves);
+	
+	}
+	
+	public LinkedList<Direction> solveDFS(Position p, Direction d) {
+		LinkedList<Choice> choiceStack = new LinkedList<Choice>();
+		Choice ch;
+
+		try {
+			choiceStack.push(nextChoices(p, d));
+			while (!choiceStack.isEmpty()) {
+				ch = choiceStack.peek();
+				
+				if (ch.isDeadend()|| visited.contains(ch.at)) {
+					// backtrack.
+					choiceStack.pop();
+					if (!choiceStack.isEmpty())
+						choiceStack.peek().choices.pop();
+					continue;
+				}
+				choiceStack.push(solver.follow(ch.at, ch.choices.peek()));
+			}
+			// No solution found.
+			return null;
+		} catch (SolutionFound e) {
+			Iterator<Choice> iter = choiceStack.iterator();
+			LinkedList<Direction> solutionPath = new LinkedList<Direction>();
+			while (iter.hasNext()) {
+				ch = iter.next();
+				solutionPath.push(ch.choices.peek());
+			}
+
+			if (maze.display != null)
+				maze.display.updateDisplay();
+			 //System.out.println(solver.pathToFullPath(solutionPath));
+			return solutionPath;
+		}
+	}
+	
+	
+
+}

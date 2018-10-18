@@ -1,0 +1,40 @@
+1524594378660	Move folder
+1524594401014	Move files
+1524596866095	Move folder
+1524601250512	Move files
+1524601402298	Delete element
+1524685033011	Rename field 'blockindex'
+1524712488749	Rename local variable 'enabled'
+1524713537175	Delete element
+1524713553199	Delete element
+1524714583279	Move compilation unit
+1524714708978	Delete element
+1524714713344	Delete element
+1524717102260	Delete element
+1524720039390	Rename field 'blockqueues'
+1524759303511	Rename method 'print'
+1524761931159	Rename method 'togglePower'
+1524773663391	Rename method 'disabled'
+1524774689649	Rename method 'oneReader'
+1524776763719	Rename method 'read'
+1524776835329	Rename method 'write'
+1524776988945	Rename method 'stopWriting'
+1524777312178	Rename method 'isDisabled'
+1524777461493	Rename enum constant 'ENABLED'
+1524778523330	Rename method 'processNonBlockingRead'
+1524778532782	Rename method 'processNonBlockingWrite'
+1524778548209	Rename method 'processNonBlocking'
+1524778555398	Rename method 'processBlockingRead'
+1524778563921	Rename method 'processBlockingWrite'
+1524778572219	Rename method 'processBlocking'
+1524778600862	Rename method 'processRelease'
+1524778621876	Rename method 'processWriteRelease'
+1524778631516	Rename method 'processReadRelease'
+1524778642509	Rename method 'processRequest'
+1524778669135	Rename method 'handleManagementRequest'
+1524778681472	Rename method 'handleDisable'
+1524778694930	Rename method 'handleEnable'
+1524779064573	Rename method 'processForwarding'
+1524779577831	Rename method 'expired'
+1524781719290	Rename resource 'blankScript'
+1524785996161	Rename enum constant 'IDLE'

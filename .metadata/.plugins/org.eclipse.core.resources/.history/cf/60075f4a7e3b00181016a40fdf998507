@@ -1,0 +1,81 @@
+package cmsc433.p3;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.RecursiveTask;
+
+@SuppressWarnings("serial")
+public class MazeTask extends RecursiveTask<LinkedList<Direction>>{
+	
+	private static  Maze maze;
+	private final Position p;
+	private final int forkdepth;
+	private static Set<Position> visited = Collections.synchronizedSet(new HashSet<Position>());
+	private final static int THRESHOLD = -1;
+	
+	
+	public MazeTask(Maze maze) {
+		MazeTask.maze = maze;
+		this.p = maze.getStart();
+		forkdepth = 0;
+			
+	}
+	
+	public MazeTask(Position p, int lastdepth) {
+		this.p = p;
+		forkdepth = lastdepth + 1;
+	}
+
+	@Override
+	protected LinkedList<Direction> compute() {
+		if(maze.getEnd().equals(p)) {
+			return new LinkedList<Direction>();
+		}else {
+			MazeTask.visited.add(p);
+			List<Direction> ds = maze.getMoves(p);
+			for (Direction d  : ds) {
+				Position nextP = p.move(d);
+				if(!visited.contains(nextP)) {
+					LinkedList<Direction> sol;
+						
+						sol = new MazeTask(nextP, forkdepth).fork().join();
+					if(sol != null) {
+						sol.addFirst(d);
+						return sol;
+					}
+				}
+				
+			}
+		}
+		
+		return null;
+		
+		
+	}
+	
+	
+	/*public LinkedList<Direction> recSolve(Position p) {
+		if (maze.getEnd().equals(p)) {
+			return new LinkedList<Direction>();
+		} else {
+			visited.add(p);
+			List<Direction> ds = maze.getMoves(p);
+			for (Direction d : ds) {
+				Position nextP = p.move(d);
+				if (!visited.contains(nextP)) {
+					LinkedList<Direction> sol = recSolve(nextP);
+					if (sol != null) {
+						sol.addFirst(d);
+						return sol;
+					}
+				}
+			}
+			return null; // no solution
+		}
+	}*/
+
+}

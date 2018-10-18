@@ -1,0 +1,203 @@
+package cmsc433.p5;
+
+import java.io.IOException;
+import java.util.LinkedList;
+
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+/**
+ * Map reduce which takes in a CSV file with tweets as input and output
+ * key/value pairs.</br>
+ * </br>
+ * The key for the map reduce depends on the specified {@link TrendingParameter}
+ * , <code>trendingOn</code> passed to
+ * {@link #score(Job, String, String, TrendingParameter)}).
+ */
+public class TweetPopularityMR {
+
+	// For your convenience...
+	public static final int          TWEET_SCORE   = 1;
+	public static final int          RETWEET_SCORE = 2;
+	public static final int          MENTION_SCORE = 1;
+	public static final int			 PAIR_SCORE = 1;
+
+	// Is either USER, TWEET, HASHTAG, or HASHTAG_PAIR. Set for you before call to map()
+	private static TrendingParameter trendingOn;
+
+	private static void print(String string) {
+		System.out.println(string);
+	}
+	
+	public static class TweetMapper
+	extends Mapper<LongWritable, Text,Text, IntWritable  > {
+
+		@Override
+		public void map(LongWritable key, Text value, Context context)
+				throws IOException, InterruptedException {
+			// Converts the CSV line into a tweet object
+			Tweet tweet = Tweet.createTweet(value.toString());
+
+			switch(trendingOn) {
+			case USER: 
+				context.write(new Text(tweet.getUserScreenName().toString()), new IntWritable(1));
+				
+				for( String user : tweet.getMentionedUsers()) {
+					context.write(new Text(user), new IntWritable(1));
+				}
+				
+				String retweetedUser = tweet.getRetweetedUser();
+				
+				if(retweetedUser != null) {
+					context.write(new Text(retweetedUser), new IntWritable(2));
+				}
+				
+				break;
+			case TWEET:
+				context.write(new Text(tweet.getId().toString()), new IntWritable(1));
+				Long retweetedTweet = tweet.getRetweetedTweet();
+				if(retweetedTweet != null ) {
+					context.write(new Text(retweetedTweet.toString()), new IntWritable(2));
+				}
+				break;
+			case HASHTAG:
+				for (String hashtag : tweet.getHashtags()) {
+					context.write(new Text(cleanTag(hashtag).toString()), new IntWritable(1));
+				}
+				break;
+			case HASHTAG_PAIR:
+				if(tweet.getHashtags().size() >= 2) {
+					Iterable<String> pairs = createPairs(tweet.getHashtags());
+					for(String pair : pairs) {
+						context.write(new Text(pair), new IntWritable(1));	
+					}
+				}
+				break;
+			}
+			
+			
+			// TODO: Your code goes here
+
+
+
+
+
+		}
+	}
+
+	private static Integer sumAll( Iterable<IntWritable> values) {
+		
+		Integer sum = 0;
+		for(IntWritable value : values) {
+			sum += value.get();
+		}
+		
+		return sum;
+	}
+	
+	public static class PopularityReducer
+	extends Reducer<Text, IntWritable, Text, IntWritable> {
+
+		@Override
+		public void reduce(Text key, Iterable<IntWritable> values, Context context)
+				throws IOException, InterruptedException {
+
+			//print(sumAll(values).toString()  + "\t" +   key.toString() );
+			context.write(new Text(key.toString()), new IntWritable(sumAll(values))  );
+
+		}
+
+		
+	}
+	
+	
+	private static Iterable<String> createPairs(Iterable<String> hashtagList){
+		LinkedList<String> pairList = new LinkedList<String>();
+		LinkedList<String> tempList = new LinkedList<String>();
+		
+		
+		for(String s : hashtagList) {
+			tempList.add(cleanTag(s));
+		}
+		
+		if(tempList.size() < 2) return tempList;
+		
+		for(int i = 0 ; i < tempList.size()-1 ;i++) {
+			for(int j = i+1; j < tempList.size(); j++){
+				pairList.add(formatPairs(tempList.subList(i, j+1)));
+			}
+		}
+		return pairList;
+	}
+	
+	private static String formatPairs(Iterable<String> pair){
+		LinkedList<String> temp = new LinkedList<String>();
+		for(String value : pair) {
+			temp.add(value);
+		}
+		
+		String returnString = temp.get(0).compareTo(temp.get(1)) == -1 ? "(" + temp.get(0) + "," + temp.get(1) + ")" : "(" + temp.get(1) + "," + temp.get(0) + ")";
+		
+		return returnString;
+	}
+	
+	private static String cleanTag(String hashtag) {
+		return hashtag.replace("#", "");
+	}
+	
+	/**
+	 * Method which performs a map reduce on a specified input CSV file and
+	 * outputs the scored tweets, users, or hashtags.</br>
+	 * </br>
+	 * 
+	 * @param job
+	 * @param input
+	 *          The CSV file containing tweets
+	 * @param output
+	 *          The output file with the scores
+	 * @param trendingOn
+	 *          The parameter on which to score
+	 * @return true if the map reduce was successful, false otherwise.
+	 * @throws Exception
+	 */
+	public static boolean score(Job job, String input, String output,
+			TrendingParameter trendingOn) throws Exception {
+
+		TweetPopularityMR.trendingOn = trendingOn;
+
+		job.setJarByClass(TweetPopularityMR.class);
+
+		// TODO: Set up map-reduce...
+		job.setJobName("Popularity Score Map");
+		
+		job.setMapperClass(TweetMapper.class);
+		job.setReducerClass(PopularityReducer.class);
+	
+		job.setMapOutputKeyClass(Text.class);
+		job.setMapOutputValueClass(IntWritable.class);
+		
+		job.setOutputKeyClass(Text.class);
+		job.setOutputValueClass(IntWritable.class);
+		
+		//job.setWorkingDirectory(new Path(output));
+		
+		
+		//print(input);
+		//print(output);
+
+
+		// End
+
+		FileInputFormat.addInputPath(job, new Path(input));
+		FileOutputFormat.setOutputPath(job, new Path(output));
+
+		return job.waitForCompletion(true);
+	}
+}

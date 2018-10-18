@@ -1,0 +1,36 @@
+package cmsc433.p3;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
+//import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ThreadPoolExecutor;
+
+import cmsc433.p3.STMazeSolverBFS.SolutionNode;
+
+/**
+ * This file needs to hold your solver to be tested. You can alter the class to
+ * extend any class that extends MazeSolver. It must have a constructor that
+ * takes in a Maze. It must have a solve() method that returns the datatype
+ * List<Direction> which will either be a reference to a list of steps to take
+ * or will be null if the maze cannot be solved.
+ */
+public class StudentMTMazeSolver extends SkippingMazeSolver {
+	public StudentMTMazeSolver(Maze maze) {
+		super(maze);
+	}
+	private int processors = Runtime.getRuntime().availableProcessors();
+	private STMazeSolverBFS BFSSolver = new STMazeSolverBFS(maze);
+	private ThreadPoolExecutor executor ;
+	private Position start = maze.getStart();
+	private ArrayList<SolutionNode> startNodes = new ArrayList<SolutionNode>(processors + 1);
+	private ForkJoinPool fjp = ForkJoinPool.commonPool();
+	
+	public List<Direction> solve() {
+		MazeTask mt = new MazeTask(this.maze);
+		return fjp.invoke(mt);
+	}
+}

@@ -1,0 +1,60 @@
+package cmsc433.p3;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.RecursiveTask;
+
+public class MazeTask extends RecursiveTask<List<Direction>>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1533644862234875028L;
+	
+	private final Maze maze;
+	private final Position p;
+	private static Set<Position> visited = Collections.synchronizedSet(new HashSet<Position>());
+	
+	public MazeTask(Maze maze) {
+		this.maze = maze;
+		this.p = maze.getStart();
+	}
+	
+	public MazeTask(Maze maze, Position p) {
+		this.maze = maze;
+		this.p = p;
+	}
+
+	@Override
+	protected List<Direction> compute() {
+		// TODO Auto-generated method stub
+		
+		
+		
+		return null;
+	}
+	
+	
+	public LinkedList<Direction> recSolve(Position p) {
+		if (maze.getEnd().equals(p)) {
+			return new LinkedList<Direction>();
+		} else {
+			visited.add(p);
+			List<Direction> ds = maze.getMoves(p);
+			for (Direction d : ds) {
+				Position nextP = p.move(d);
+				if (!visited.contains(nextP)) {
+					LinkedList<Direction> sol = recSolve(nextP);
+					if (sol != null) {
+						sol.addFirst(d);
+						return sol;
+					}
+				}
+			}
+			return null; // no solution
+		}
+	}
+
+}
